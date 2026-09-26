@@ -1,18 +1,28 @@
 import express from "express"
-import home from "./Pages/home.js"
-import contact from "./Pages/contact.js"
-import about from "./Pages/about.js"
+import path from "path"
 
 
 const app=express()
+app.use(express.static("Css"));
 
-app.get("",(req,resp)=>{
-    resp.send(home())
+
+
+app.get('',(req,resp)=>{
+    const abspath=path.resolve('Pages/login.html')
+    resp.sendFile(abspath)
 })
-app.get("/about",(req,resp)=>{
-    resp.send(about())
+app.post('/home',(req,resp)=>{
+    const abspath=path.resolve('Pages/home.html')
+    resp.sendFile(abspath)
 })
-app.get("/contact",(req,resp)=>{
-    resp.send(contact())
+app.get('/about',(req,resp)=>{
+    const abspath=path.resolve('Pages/about.html')
+    resp.sendFile(abspath)
 })
+
+app.use((req,resp)=>{
+    const absPath=path.resolve("Pages/404page.html")
+    resp.status(404).sendFile(absPath)
+})
+
 app.listen(3000)
