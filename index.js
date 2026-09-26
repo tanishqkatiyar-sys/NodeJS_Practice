@@ -1,28 +1,39 @@
-import express from "express"
-import path from "path"
+import express from "express";
+import { MongoClient } from "mongodb";
 
+const dbname = "school";
+const url = "mongodb://localhost:27017";
 
-const app=express()
-app.use(express.static("Css"));
+const client = new MongoClient(url);
 
+async function dbConnection() {
+    try {
+        await client.connect();
 
+        console.log("MongoDB connected");
 
-app.get('',(req,resp)=>{
-    const abspath=path.resolve('Pages/login.html')
-    resp.sendFile(abspath)
-})
-app.post('/home',(req,resp)=>{
-    const abspath=path.resolve('Pages/home.html')
-    resp.sendFile(abspath)
-})
-app.get('/about',(req,resp)=>{
-    const abspath=path.resolve('Pages/about.html')
-    resp.sendFile(abspath)
-})
+        const db = client.db(dbname);
+        const collection = db.collection("students");
 
-app.use((req,resp)=>{
-    const absPath=path.resolve("Pages/404page.html")
-    resp.status(404).sendFile(absPath)
-})
+        console.log("Connected to students collection");
+    } catch (error) {
+        console.log("MongoDB connection error:", error);
+    }
+}
 
-app.listen(3000)
+dbConnection();
+
+const app = express();
+
+// Middleware
+app.use(express.json());
+
+// Test route
+app.get("/", (req, res) => {
+    res.send("Express server is running");
+});
+
+// Start server
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
