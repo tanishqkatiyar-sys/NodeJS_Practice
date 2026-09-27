@@ -1,39 +1,36 @@
-import express from "express";
-import { MongoClient } from "mongodb";
+import express from 'express'
 
-const dbname = "school";
-const url = "mongodb://localhost:27017";
+const app=express()
+ app.use(express.urlencoded({extended:false}))
 
-const client = new MongoClient(url);
 
-async function dbConnection() {
-    try {
-        await client.connect();
 
-        console.log("MongoDB connected");
+app.get('/', (req, resp) => {
+    resp.send(`
+        <h1>Student Form</h1>
 
-        const db = client.db(dbname);
-        const collection = db.collection("students");
+        <form action="/submit" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name"><br><br>
 
-        console.log("Connected to students collection");
-    } catch (error) {
-        console.log("MongoDB connection error:", error);
-    }
-}
+            <label>Email:</label>
+            <input type="email" name="email"><br><br>
 
-dbConnection();
+            <label>Age:</label>
+            <input type="number" name="age"><br><br>
 
-const app = express();
-
-// Middleware
-app.use(express.json());
-
-// Test route
-app.get("/", (req, res) => {
-    res.send("Express server is running");
+            <button type="submit">Submit</button>
+        </form>
+    `);
 });
+app.post('/submit',(req,resp)=>{
+    resp.send(`
+        <h2>Form Submitted Successfully!</h2>
+        <p>Name: ${req.body.name}</p>
+        <p>Email: ${req.body.email}</p>
+        <p>Age: ${req.body.age}</p>
+    `)
+})
 
-// Start server
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
+
+app.listen(3000)
