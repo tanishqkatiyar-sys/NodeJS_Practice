@@ -1,36 +1,22 @@
 import express from 'express'
 
-const app=express()
- app.use(express.urlencoded({extended:false}))
+const app = express()
 
+app.set("view engine", "ejs")
 
+// Middleware to read form data
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'))
 
 app.get('/', (req, resp) => {
-    resp.send(`
-        <h1>Student Form</h1>
-
-        <form action="/submit" method="POST">
-            <label>Name:</label>
-            <input type="text" name="name"><br><br>
-
-            <label>Email:</label>
-            <input type="email" name="email"><br><br>
-
-            <label>Age:</label>
-            <input type="number" name="age"><br><br>
-
-            <button type="submit">Submit</button>
-        </form>
-    `);
-});
-app.post('/submit',(req,resp)=>{
-    resp.send(`
-        <h2>Form Submitted Successfully!</h2>
-        <p>Name: ${req.body.name}</p>
-        <p>Email: ${req.body.email}</p>
-        <p>Age: ${req.body.age}</p>
-    `)
+    resp.render("addUser")
 })
 
+app.post('/submit', (req, resp) => {
+    console.log(req.body)
+    resp.render("submitUser", req.body)
+})
 
-app.listen(3000)
+app.listen(3000, () => {
+    console.log("Server running at http://localhost:3000")
+})
