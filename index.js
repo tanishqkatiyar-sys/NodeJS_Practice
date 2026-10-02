@@ -1,22 +1,21 @@
 import express from 'express'
+import { MongoClient } from 'mongodb'
 
-const app = express()
 
-app.set("view engine", "ejs")
 
-// Middleware to read form data
-app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'))
+const app=express()
+app.set("view engine","ejs")
+const dbName="college"
+const url='mongodb://127.0.0.1:27017'
 
-app.get('/', (req, resp) => {
-    resp.render("addUser")
+const client=new MongoClient(url);
+
+app.get('',async(req,resp)=>{
+    await client.connect();
+    const db=client.db(dbName)
+    const collection=db.collection('students')
+    const result= await collection.find().toArray()
+    resp.render('students',{students:result})
 })
 
-app.post('/submit', (req, resp) => {
-    console.log(req.body)
-    resp.render("submitUser", req.body)
-})
-
-app.listen(3000, () => {
-    console.log("Server running at http://localhost:3000")
-})
+app.listen(3000)
