@@ -1,127 +1,92 @@
 
-/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: #fafafa;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
-/* Common container for both pages */
 .container {
-    background: #ffffff;
-    width: 400px;
-    max-width: 100%;
-    padding: 35px;
-    border-radius: 15px;
+    width: 350px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Main heading */
+.login-box, .signup-box {
+    background: white;
+    border: 1px solid #dbdbdb;
+    padding: 35px 30px;
+    margin-bottom: 10px;
+}
+
 h1 {
-    color: #667eea;
-    font-size: 26px;
-    margin-bottom: 25px;
-    line-height: 1.4;
+    font-family: cursive;
+    font-size: 42px;
+    margin-bottom: 10px;
+    color: #262626;
 }
 
-/* Form labels */
-label {
-    display: block;
-    text-align: left;
-    margin: 15px 0 8px;
-    color: #333333;
+.subtitle {
+    color: #737373;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+button {
+    width: 100%;
+    padding: 11px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 7px;
+    background: #3897f0;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1877d2;
+}
+
+.separator {
+    margin: 25px 0;
+    color: #737373;
+    font-size: 13px;
+}
+
+.toggle {
+    font-size: 13px;
+    color: #262626;
+}
+
+a {
+    color: #0095f6;
+    text-decoration: none;
     font-weight: bold;
 }
 
-/* Input fields */
-input {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cccccc;
-    border-radius: 7px;
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s;
+#message {
+    font-size: 13px;
+    margin-top: 12px;
 }
 
-/* Input focus */
-input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 6px rgba(102, 126, 234, 0.4);
-}
-
-/* Submit button and link */
-button,
-.btn {
-    display: inline-block;
-    width: 100%;
-    padding: 12px;
-    margin-top: 25px;
-    border: none;
-    border-radius: 7px;
-    background: #667eea;
-    color: white;
-    font-size: 16px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Button hover */
-button:hover,
-.btn:hover {
-    background: #764ba2;
-    transform: translateY(-2px);
-}
-
-/* Submitted user details */
-.user-details {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    background: #f3f4f6;
+.signup-box {
+    font-size: 13px;
     padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* Name and age headings on submitted page */
-.user-details h2 {
-    display: block;
-    width: 100%;
-    color: #333333;
-    font-size: 20px;
-    line-height: 1.5;
-    margin: 0;
-    overflow-wrap: anywhere;
-    text-align: left;
-}
-
-/* Responsive design */
-@media (max-width: 480px) {
-    .container {
-        padding: 25px 20px;
-    }
-
-    h1 {
-        font-size: 22px;
-    }
-
-    .user-details h2 {
-        font-size: 18px;
-    }
 }
