@@ -8,15 +8,15 @@
 <body>
     <table border="1">
         <tr>
-            <td>Name</td>
-            <td>Age</td>
             <td>Email</td>
+            <td>Password</td>
         </tr>
         <%students.forEach(student=>{%>
             <tr>
-                <td><%=student.name%></td>
-                <td><%=student.age%></td>
                 <td><%=student.email%></td>
+                <td><%=student.testValue%></td>
+                <td><a href="/delete/<%=student._id%>">Delete</a></td>
+                <td><a href="/ui/student/<%=student._id%>">Update</a></td>
             </tr>
         <%})%>
     </table>
