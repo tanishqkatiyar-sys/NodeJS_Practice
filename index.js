@@ -47,6 +47,31 @@ app.post('/save', async (req, resp) => {
     });
 });
 
+
+app.put('/update/:id',async(req,resp)=>{
+    const id=req.params.id
+    const studentData = await studentModel.findByIdAndUpdate(
+    id,
+    { ...req.body },
+    { new: true }
+);
+    resp.send({
+        message:"Data Updated",
+        success:true,
+        info:studentData
+    })
+})
+
+app.delete('/delete/:id',async(req,resp)=>{
+    const id=req.params.id;
+    const studentData=await studentModel.findByIdAndDelete(id);
+    resp.send({
+        message:"Data Deleted",
+        success:true,
+        info:studentData
+    })
+})
+
 app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
