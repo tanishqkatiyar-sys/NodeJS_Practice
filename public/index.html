@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-box {
+            background: white;
+            border: 1px solid #dbdbdb;
+            padding: 40px 35px;
+        }
+
+        h1 {
+            font-family: cursive;
+            font-size: 42px;
+            margin-bottom: 35px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            background: #fafafa;
+            font-size: 13px;
+        }
+
+        button {
+            width: 100%;
+            padding: 11px;
+            margin-top: 10px;
+            background: #3897f0;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1877d2;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 14px;
+            color: green;
+            font-weight: bold;
+        }
+
+        .forgot {
+            display: block;
+            margin-top: 25px;
+            color: #00376b;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .signup {
+            margin-top: 12px;
+            padding: 22px;
+            background: white;
+            border: 1px solid #dbdbdb;
+            font-size: 14px;
+        }
+
+        .signup a {
+            color: #0095f6;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Socially</h1>
+
+            <form action="/" method="post" id="loginForm">
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email address"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button type="submit">Log In</button>
+            </form>
+
+            <p id="message"></p>
+
+            <a href="#" class="forgot">Forgot password?</a>
+        </div>
+    </div>
+</body>
+</html>
