@@ -1,0 +1,24 @@
+import express from "express"
+import session from "express-session"
+
+const app=express();
+ app.set("view engine","ejs");
+ 
+ app.use(session({
+    secret:"apple"
+ }))
+
+ app.use(express.urlencoded({extended:true}));
+
+ app.get("/login",(req,resp)=>{
+    resp.render('login')
+ })
+
+ app.post("/profile",(req,resp)=>{
+    req.session.data=req.body;
+    const data=req.session.data;
+    resp.render("profile",{data})
+ })
+
+
+ app.listen(3000)
