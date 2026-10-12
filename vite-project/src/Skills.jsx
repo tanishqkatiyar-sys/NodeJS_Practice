@@ -1,47 +1,21 @@
-import { useState } from 'react';
-
+import { useState } from "react";
 function Skills() {
-    const [skills, setSkills] = useState([]);
 
-    const handleSkills = (event) => {
-        if (event.target.checked) {
-            setSkills([...skills, event.target.value]);
-        } else {
-            setSkills(
-                skills.filter((item) => item !== event.target.value)
-            );
-        }
-    };
-
+    const [city,setCity]=useState('Kanpur');
     return (
         <>
-            <h2>Select Your Skills</h2>
+            <h2>Select Your City</h2>
 
-            <label htmlFor="html">
-                <input type="checkbox" id="html" value="HTML" onChange={handleSkills} />
-                HTML
-            </label>
-            <br />
+            <label htmlFor="city">Choose a city: </label>
 
-            <label htmlFor="css">
-                <input type="checkbox" id="css" value="CSS" onChange={handleSkills} />
-                CSS
-            </label>
-            <br />
-
-            <label htmlFor="javascript">
-                <input type="checkbox" id="javascript" value="JavaScript" onChange={handleSkills} />
-                JavaScript
-            </label>
-            <br />
-
-            <label htmlFor="react">
-                <input type="checkbox" id="react" value="React" onChange={handleSkills} />
-                React
-            </label>
-
-            <h3>Selected Skills:</h3>
-            <p>{skills.join(', ')}</p>
+            <select id="city" onChange={(event)=>{setCity(event.target.value)}} defaultValue="Kanpur">
+                <option value="Kanpur">Kanpur</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Jaipur">Jaipur</option>
+            </select>
+            <h1>Selected City: {city}</h1>
         </>
     );
 }
