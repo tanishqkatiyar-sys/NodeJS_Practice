@@ -1,32 +1,28 @@
-function Student({students}){
-    return (
-        <>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Age</td>
-                        <td>Marks</td>
-                        <td>Branch</td>
-                    </tr>
-                </thead>
 
-                <tbody>
-                    {students.map((student)=>{
-                        return(
-                            <tr key={student.id}>
-                                <td>{student.name} </td>
-                                <td>{student.age}</td>
-                                <td>{student.marks}</td>
-                                <td>{student.branch}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
-        </>
-    )
-    
+function Student({ students }) {
+  return (
+    <>
+      <h1>Students Data</h1>
+
+      {students.map((student) => (
+        <div key={student.id}>
+          <h2>{student.name}</h2>
+
+          <ul>
+            <li>Age: {student.age}</li>
+            <li>Branch: {student.branch}</li>
+          </ul>
+
+          <h4>Subjects</h4>
+          <ul>
+            {student.subjects.map((subject, index) => (
+              <li key={index}>{subject.name}:{subject.marks}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </>
+  );
 }
 
-export default Student
+export default Student;
